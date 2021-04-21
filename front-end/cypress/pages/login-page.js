@@ -19,8 +19,6 @@ function performValidLogin(username, password, confirmationContent){
     cy.contains(confirmationContent)
 }
 
-
-
 // Exporting functions
 module.exports = {
     checkLoginPageTitle,
