@@ -2,13 +2,12 @@
 
 // Elements
 const LOGOUT_BTN = '.user > .btn'
-const ROOMS_PAGE_BTN = ':nth-child(1) > .btn'
-const CLIENTS_PAGE_BTN = ':nth-child(2) > .btn'
-const BILLS_PAGE_BTN = ':nth-child(3) > .btn'
-const RESERVATIONS_PAGE_BTN = ':nth-child(4) > .btn'
+const ROOMS_PAGE_BTN = '.blocks > :nth-child(1) > .btn'
+const CLIENTS_PAGE_BTN = '.blocks > :nth-child(2) > .btn'
+const BILLS_PAGE_BTN = '.blocks > :nth-child(3) > .btn'
+const RESERVATIONS_PAGE_BTN = '.blocks > :nth-child(4) > .btn'
 
 // Functions / Actions / Methods
-
 function performLogout(confirmationContent){
     cy.get(LOGOUT_BTN).click()
     cy.contains(confirmationContent)

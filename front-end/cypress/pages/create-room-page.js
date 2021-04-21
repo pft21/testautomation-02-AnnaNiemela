@@ -12,7 +12,6 @@ const SAVE_BTN = '.blue'
 const BACK_BTN = '[href="/rooms"]'
 
 // Functions / Actions / Methods
-
 function performLogout(confirmationContent){
     cy.get(LOGOUT_BTN).click()
     cy.contains(confirmationContent)
@@ -21,6 +20,7 @@ function performLogout(confirmationContent){
 function chooseCategory(category){
     cy.get(CATEGORY_DROPDOWN_LIST).select(category)
 }
+
 function addRoomNumber(roomnumber){
     cy.get(ROOM_NUMBER_FIELD).type(roomnumber)
 }
@@ -50,8 +50,6 @@ function returnToRoomsPage(confirmationContent){
     cy.get(BACK_BTN).click()
     cy.contains(confirmationContent)
 }
-
-
 
 // Exporting functions
 module.exports = {
