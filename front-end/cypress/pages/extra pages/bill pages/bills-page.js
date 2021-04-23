@@ -12,28 +12,35 @@ const LAST_BILL = '.bills > :nth-last-child(1)'
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
     cy.get(LOGOUT_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function navigateToCreateBillPage(confirmationContent){
     cy.get(CREATE_BILL_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function navigateToEditBillPage(confirmationContent){
     cy.get(MANAGE_BILL_BTN).click()
+    cy.wait(200)
     cy.get(EDIT_BILL_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function deleteBill(confirmationContent){
     cy.get(MANAGE_BILL_BTN).click()
+    cy.wait(200)
     cy.get(DELETE_BILL_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function returnToIndexPage(confirmationContent){
     cy.get(BACK_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 

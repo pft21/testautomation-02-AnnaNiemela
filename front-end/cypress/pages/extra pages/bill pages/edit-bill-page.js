@@ -15,25 +15,28 @@ function performLogout(confirmationContent){
 }
 
 function editValue(value){
-    cy.get(EDIT_VALUE_FIELD).clear().type(value)
+    cy.get(EDIT_VALUE_FIELD).wait(100).clear().type(value)
 }
 
 function editPaid(){
-    cy.get(EDIT_PAID_CHECKBOX).click()
+    cy.get(EDIT_PAID_CHECKBOX).wait(100).click()
 }
 
 function saveBill(confirmationContent){
     cy.get(SAVE_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function returnToBillsPage(confirmationContent){
     cy.get(BACK_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function deleteBill(confirmationContent){
     cy.get(DELETE_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 

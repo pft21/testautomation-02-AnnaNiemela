@@ -1,0 +1,255 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 8,
+    "passes": 4,
+    "pending": 0,
+    "failures": 4,
+    "start": "2021-04-23T09:00:45.578Z",
+    "end": "2021-04-23T09:01:21.787Z",
+    "duration": 36209,
+    "testsRegistered": 8,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f0fe4437-9c3b-40a0-82fa-5d69c1f6c550",
+      "title": "",
+      "fullFile": "cypress/integration/extra test suites/extra-test-suite-clients.spec.js",
+      "file": "cypress/integration/extra test suites/extra-test-suite-clients.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+          "title": "Extra test suite with Page-objects - Clients",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "View Clients",
+              "fullTitle": "Extra test suite with Page-objects - Clients View Clients",
+              "timedOut": null,
+              "duration": 2798,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToClients('Clients');\nclientsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "13d2294b-fe7b-4f8f-b057-2c3127bdd820",
+              "parentUUID": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a new client by using valid input in all fields",
+              "fullTitle": "Extra test suite with Page-objects - Clients Create a new client by using valid input in all fields",
+              "timedOut": null,
+              "duration": 4772,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToClients('Clients');\nclientsPage.navigateToCreateClientPage('New Client');\ncreateClientPage.addName('ABC');\ncreateClientPage.addEmail('abc@xyz.com');\ncreateClientPage.addTelephone('0701234567');\ncreateClientPage.saveClient('Clients');\nclientsPage.verifyLastClient('ABC', 'abc@xyz.com', '0701234567');\nclientsPage.performLogout('Login');",
+              "err": {
+                "message": "AssertionError: object tested must be an array, a map, an object, a set, a string, or a weakset, but undefined given",
+                "estack": "AssertionError: object tested must be an array, a map, an object, a set, a string, or a weakset, but undefined given\n    at Object.verifyLastClient (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-clients.spec.js:353:16)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-clients.spec.js:227:17)",
+                "diff": null
+              },
+              "uuid": "dd4fb55d-a347-46bb-b348-b8a95ca061d1",
+              "parentUUID": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Edit client",
+              "fullTitle": "Extra test suite with Page-objects - Clients Edit client",
+              "timedOut": null,
+              "duration": 4934,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToClients('Clients');\nclientsPage.navigateToCreateClientPage('New Client');\ncreateClientPage.addName('ABC');\ncreateClientPage.addEmail('abc@xyz.com');\ncreateClientPage.addTelephone('0701234567');\ncreateClientPage.saveClient('Clients');\nclientsPage.verifyLastClient('ABC', 'abc@xyz.com', '0701234567');\nclientsPage.navigateToEditClientPage('Client: ');\neditClientPage.editName('XYZ');\neditClientPage.editEmail('xyz@abc.se');\neditClientPage.editTelephone('0707654321');\neditClientPage.saveClient('Clients');\nclientsPage.verifyLastClient('XYZ', 'xyz@abc.se', '0707654321');\nclientsPage.performLogout('Login');",
+              "err": {
+                "message": "AssertionError: object tested must be an array, a map, an object, a set, a string, or a weakset, but undefined given",
+                "estack": "AssertionError: object tested must be an array, a map, an object, a set, a string, or a weakset, but undefined given\n    at Object.verifyLastClient (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-clients.spec.js:353:16)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-clients.spec.js:237:17)",
+                "diff": null
+              },
+              "uuid": "1081f6bc-a11b-433a-8325-760572ebfc1b",
+              "parentUUID": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete client on clients page",
+              "fullTitle": "Extra test suite with Page-objects - Clients Delete client on clients page",
+              "timedOut": null,
+              "duration": 5089,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToClients('Clients');\nclientsPage.navigateToCreateClientPage('New Client');\ncreateClientPage.addName('ABC');\ncreateClientPage.addEmail('abc@xyz.com');\ncreateClientPage.addTelephone('0701234567');\ncreateClientPage.saveClient('Clients');\nclientsPage.verifyLastClient('ABC', 'abc@xyz.com', '0701234567');\nclientsPage.deleteClient('Clients');\nclientsPage.performLogout('Login');",
+              "err": {
+                "message": "AssertionError: object tested must be an array, a map, an object, a set, a string, or a weakset, but undefined given",
+                "estack": "AssertionError: object tested must be an array, a map, an object, a set, a string, or a weakset, but undefined given\n    at Object.verifyLastClient (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-clients.spec.js:353:16)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-clients.spec.js:253:17)",
+                "diff": null
+              },
+              "uuid": "03d2e922-339b-40a4-8023-6e168d6e2e49",
+              "parentUUID": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Return to indexpage when creating a client",
+              "fullTitle": "Extra test suite with Page-objects - Clients Return to indexpage when creating a client",
+              "timedOut": null,
+              "duration": 3321,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToClients('Clients');\nclientsPage.navigateToCreateClientPage('New Client');\ncreateClientPage.returnToClientsPage('Clients');\nclientsPage.returnToIndexPage('Tester Hotel Overview');\nclientsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "d3cde889-c56a-416c-85d8-8e77e85b2456",
+              "parentUUID": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Return to indexpage when on Clients page",
+              "fullTitle": "Extra test suite with Page-objects - Clients Return to indexpage when on Clients page",
+              "timedOut": null,
+              "duration": 3023,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToClients('Clients');\nclientsPage.returnToIndexPage('Tester Hotel Overview');\nclientsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "9f2bc7e3-32cb-4218-a03b-800af49430c4",
+              "parentUUID": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Return to indexpage when editing a client",
+              "fullTitle": "Extra test suite with Page-objects - Clients Return to indexpage when editing a client",
+              "timedOut": null,
+              "duration": 5727,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToClients('Clients');\nclientsPage.navigateToCreateClientPage('New Client');\ncreateClientPage.addName('ABC');\ncreateClientPage.addEmail('abc@xyz.com');\ncreateClientPage.addTelephone('0701234567');\ncreateClientPage.saveClient('Clients');\nclientsPage.navigateToEditClientPage('Client: ');\neditClientPage.returnToClientsPage('Clients');\nclientsPage.returnToIndexPage('Tester Hotel Overview');\nclientsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "171d350b-3e37-43f3-a4bd-a159f8b238d0",
+              "parentUUID": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete client on edit clients page",
+              "fullTitle": "Extra test suite with Page-objects - Clients Delete client on edit clients page",
+              "timedOut": null,
+              "duration": 5191,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToClients('Clients');\nclientsPage.navigateToCreateClientPage('New Client');\ncreateClientPage.addName('ABC');\ncreateClientPage.addEmail('abc@xyz.com');\ncreateClientPage.addTelephone('0701234567');\ncreateClientPage.saveClient('Clients');\nclientsPage.verifyLastClient('ABC', 'abc@xyz.com', '0701234567');\nclientsPage.navigateToEditClientPage('Client: ');\neditClientPage.deleteClient('Clients');\nclientsPage.performLogout('Login');",
+              "err": {
+                "message": "AssertionError: object tested must be an array, a map, an object, a set, a string, or a weakset, but undefined given",
+                "estack": "AssertionError: object tested must be an array, a map, an object, a set, a string, or a weakset, but undefined given\n    at Object.verifyLastClient (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-clients.spec.js:353:16)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-clients.spec.js:288:17)",
+                "diff": null
+              },
+              "uuid": "7dfba261-dd23-4bdc-91ed-76a1743acf32",
+              "parentUUID": "a2d61ad7-5146-4373-82e1-e19fa6719383",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "13d2294b-fe7b-4f8f-b057-2c3127bdd820",
+            "d3cde889-c56a-416c-85d8-8e77e85b2456",
+            "9f2bc7e3-32cb-4218-a03b-800af49430c4",
+            "171d350b-3e37-43f3-a4bd-a159f8b238d0"
+          ],
+          "failures": [
+            "dd4fb55d-a347-46bb-b348-b8a95ca061d1",
+            "1081f6bc-a11b-433a-8325-760572ebfc1b",
+            "03d2e922-339b-40a4-8023-6e168d6e2e49",
+            "7dfba261-dd23-4bdc-91ed-76a1743acf32"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 34855,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

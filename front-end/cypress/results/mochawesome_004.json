@@ -1,0 +1,186 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-04-23T08:43:55.119Z",
+    "end": "2021-04-23T08:44:14.901Z",
+    "duration": 19782,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "93a0fbb8-463e-41a1-9a20-9a618b6b05fa",
+      "title": "",
+      "fullFile": "cypress/integration/extra test suites/extra-test-suite-bills.spec.js",
+      "file": "cypress/integration/extra test suites/extra-test-suite-bills.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "30794f8d-38ae-4000-a94c-3ace3011d4be",
+          "title": "Extra test suite with Page-objects - Bills",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "View Bills",
+              "fullTitle": "Extra test suite with Page-objects - Bills View Bills",
+              "timedOut": null,
+              "duration": 2604,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToBills('Bills');\nbillsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "f9b24403-805b-48c8-b54f-77b53f12c521",
+              "parentUUID": "30794f8d-38ae-4000-a94c-3ace3011d4be",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a new bill by using valid input in all fields",
+              "fullTitle": "Extra test suite with Page-objects - Bills Create a new bill by using valid input in all fields",
+              "timedOut": null,
+              "duration": 2816,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToBills('Bills');\nbillsPage.navigateToCreateBillPage('New Bill');\ncreateBillPage.addValue('1000kr');\ncreateBillPage.addAsPaid();\ncreateBillPage.saveBill('Bills');\nbillsPage.verifyLastBill('1000kr', 'Yes');\nbillsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "57a411d2-c6d1-4f0a-aeb9-c7378ecbcd61",
+              "parentUUID": "30794f8d-38ae-4000-a94c-3ace3011d4be",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete bill on bills page",
+              "fullTitle": "Extra test suite with Page-objects - Bills Delete bill on bills page",
+              "timedOut": null,
+              "duration": 2744,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToBills('Bills');\nbillsPage.navigateToCreateBillPage('New Bill');\ncreateBillPage.addValue('1000kr');\ncreateBillPage.addAsPaid();\ncreateBillPage.saveBill('Bills');\nbillsPage.verifyLastBill('1000kr', 'Yes');\nbillsPage.deleteBill('Bills');\nbillsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "506e66db-46eb-455b-b5e2-10da821035bf",
+              "parentUUID": "30794f8d-38ae-4000-a94c-3ace3011d4be",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Edit bill",
+              "fullTitle": "Extra test suite with Page-objects - Bills Edit bill",
+              "timedOut": null,
+              "duration": 3190,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToBills('Bills');\nbillsPage.navigateToCreateBillPage('New Bill');\ncreateBillPage.addValue('1000kr');\ncreateBillPage.addAsPaid();\ncreateBillPage.saveBill('Bills');\nbillsPage.verifyLastBill('1000kr', 'Yes');\nbillsPage.navigateToEditBillPage('Bill: ');\neditBillPage.editValue('500kr');\neditBillPage.editPaid();\neditBillPage.saveBill('Bills');\nbillsPage.verifyLastBill('500kr', 'No');\nbillsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "b0cc966a-b7b2-4197-bed4-042e9c9e1da9",
+              "parentUUID": "30794f8d-38ae-4000-a94c-3ace3011d4be",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete bill on edit bill page",
+              "fullTitle": "Extra test suite with Page-objects - Bills Delete bill on edit bill page",
+              "timedOut": null,
+              "duration": 6960,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToBills('Bills');\nbillsPage.navigateToCreateBillPage('New Bill');\ncreateBillPage.addValue('1000kr');\ncreateBillPage.addAsPaid();\ncreateBillPage.saveBill('Bills');\nbillsPage.verifyLastBill('1000kr', 'Yes');\nbillsPage.navigateToEditBillPage('Bill: ');\neditBillPage.deleteBill('Bills');\nbillsPage.performLogout('Login');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Bills' but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Bills' but never did.\n    at Object.deleteBill (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-bills.spec.js:427:6)\n    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/extra%20test%20suites/extra-test-suite-bills.spec.js:261:18)",
+                "diff": null
+              },
+              "uuid": "f0bdf689-c30b-488f-86b4-cf751c39348a",
+              "parentUUID": "30794f8d-38ae-4000-a94c-3ace3011d4be",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f9b24403-805b-48c8-b54f-77b53f12c521",
+            "57a411d2-c6d1-4f0a-aeb9-c7378ecbcd61",
+            "506e66db-46eb-455b-b5e2-10da821035bf",
+            "b0cc966a-b7b2-4197-bed4-042e9c9e1da9"
+          ],
+          "failures": [
+            "f0bdf689-c30b-488f-86b4-cf751c39348a"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 18314,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-04-23T09:27:57.537Z",
+    "end": "2021-04-23T09:28:33.300Z",
+    "duration": 35763,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ffefa621-fcba-4b64-97a1-b300079ba381",
+      "title": "",
+      "fullFile": "cypress/integration/extra test suites/extra-test-suite-reservations.spec.js",
+      "file": "cypress/integration/extra test suites/extra-test-suite-reservations.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6fe9ffae-bab8-4110-b428-e9fc7c954e08",
+          "title": "Extra test suite with Page-objects - Reservations",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "View Reservations",
+              "fullTitle": "Extra test suite with Page-objects - Reservations View Reservations",
+              "timedOut": null,
+              "duration": 3749,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToReservations('Reservations');\nreservationsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "0b1d78cc-19d5-4bbe-981e-4c049c4dad8c",
+              "parentUUID": "6fe9ffae-bab8-4110-b428-e9fc7c954e08",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Create a new reservation by using valid input in all fields",
+              "fullTitle": "Extra test suite with Page-objects - Reservations Create a new reservation by using valid input in all fields",
+              "timedOut": null,
+              "duration": 6573,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToReservations('Reservation');\nreservationsPage.navigateToCreateReservationPage('New Reservation');\ncreateReservationPage.addStartDate('2022-01-01');\ncreateReservationPage.addEndDate('2022-01-03');\ncreateReservationPage.addClient('Jonas Hellman (#1)');\ncreateReservationPage.addRoom('Floor 1, Room 101');\ncreateReservationPage.addBill('1');\ncreateReservationPage.saveReservation('Reservations');\nreservationsPage.verifyLastReservation('2022-01-01', '2022-01-03', 'Jonas Hellman');\nreservationsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "b9bd2eb3-54b4-4397-b8ca-a28afb3a1553",
+              "parentUUID": "6fe9ffae-bab8-4110-b428-e9fc7c954e08",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete reservation on reservations page",
+              "fullTitle": "Extra test suite with Page-objects - Reservations Delete reservation on reservations page",
+              "timedOut": null,
+              "duration": 6798,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToReservations('Reservation');\nreservationsPage.navigateToCreateReservationPage('New Reservation');\ncreateReservationPage.addStartDate('2022-01-01');\ncreateReservationPage.addEndDate('2022-01-03');\ncreateReservationPage.addClient('Jonas Hellman (#1)');\ncreateReservationPage.addRoom('Floor 1, Room 101');\ncreateReservationPage.addBill('1');\ncreateReservationPage.saveReservation('Reservations');\nreservationsPage.verifyLastReservation('2022-01-01', '2022-01-03', 'Jonas Hellman');\nreservationsPage.deleteReservation('Reservations');\nreservationsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "f7e288e9-65a1-4576-9c8b-f3a245e9d91a",
+              "parentUUID": "6fe9ffae-bab8-4110-b428-e9fc7c954e08",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Edit reservation",
+              "fullTitle": "Extra test suite with Page-objects - Reservations Edit reservation",
+              "timedOut": null,
+              "duration": 9399,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToReservations('Reservation');\nreservationsPage.navigateToCreateReservationPage('New Reservation');\ncreateReservationPage.addStartDate('2022-01-01');\ncreateReservationPage.addEndDate('2022-01-03');\ncreateReservationPage.addClient('Jonas Hellman (#1)');\ncreateReservationPage.addRoom('Floor 1, Room 101');\ncreateReservationPage.addBill('1');\ncreateReservationPage.saveReservation('Reservations');\nreservationsPage.verifyLastReservation('2022-01-01', '2022-01-03', 'Jonas Hellman');\nreservationsPage.navigateToEditReservationPage('Reservation: ');\neditReservationPage.editStartDate('2022-02-01');\neditReservationPage.editEndDate('2022-02-03');\neditReservationPage.editClient('Mikael Eriksson (#2)');\neditReservationPage.editRoom('Floor 1, Room 102');\neditReservationPage.editBill('2');\neditReservationPage.saveReservation('Reservations');\nreservationsPage.verifyLastReservation('2022-02-01', '2022-02-03', 'Mikael Eriksson');\nreservationsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "b8f9a510-8947-428a-9b44-2dbf0f91b4f3",
+              "parentUUID": "6fe9ffae-bab8-4110-b428-e9fc7c954e08",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete reservation on edit reservation page",
+              "fullTitle": "Extra test suite with Page-objects - Reservations Delete reservation on edit reservation page",
+              "timedOut": null,
+              "duration": 7610,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexPage.navigateToReservations('Reservation');\nreservationsPage.navigateToCreateReservationPage('New Reservation');\ncreateReservationPage.addStartDate('2022-01-01');\ncreateReservationPage.addEndDate('2022-01-03');\ncreateReservationPage.addClient('Jonas Hellman (#1)');\ncreateReservationPage.addRoom('Floor 1, Room 101');\ncreateReservationPage.addBill('1');\ncreateReservationPage.saveReservation('Reservations');\nreservationsPage.verifyLastReservation('2022-01-01', '2022-01-03', 'Jonas Hellman');\nreservationsPage.navigateToEditReservationPage('Reservation: ');\neditReservationPage.deleteReservation('Reservations');\nreservationsPage.performLogout('Login');",
+              "err": {},
+              "uuid": "9c4326d5-12d7-4f81-8916-c0afba4b27f4",
+              "parentUUID": "6fe9ffae-bab8-4110-b428-e9fc7c954e08",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0b1d78cc-19d5-4bbe-981e-4c049c4dad8c",
+            "b9bd2eb3-54b4-4397-b8ca-a28afb3a1553",
+            "f7e288e9-65a1-4576-9c8b-f3a245e9d91a",
+            "b8f9a510-8947-428a-9b44-2dbf0f91b4f3",
+            "9c4326d5-12d7-4f81-8916-c0afba4b27f4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 34129,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

@@ -12,28 +12,35 @@ const LAST_RESERVATION = '.reservations > :nth-last-child(1)'
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
     cy.get(LOGOUT_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function navigateToCreateReservationPage(confirmationContent){
     cy.get(CREATE_RESERVATION_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function navigateToEditReservationPage(confirmationContent){
     cy.get(MANAGE_RESERVATION_BTN).click()
+    cy.wait(200)
     cy.get(EDIT_RESERVATION_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function deleteReservation(confirmationContent){
     cy.get(MANAGE_RESERVATION_BTN).click()
+    cy.wait(200)
     cy.get(DELETE_RESERVATION_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function returnToIndexPage(confirmationContent){
     cy.get(BACK_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 

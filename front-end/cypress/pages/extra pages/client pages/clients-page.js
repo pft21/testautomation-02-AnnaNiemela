@@ -12,28 +12,35 @@ const LAST_CLIENT = '.clients > :nth-last-child(1)'
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
     cy.get(LOGOUT_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function navigateToCreateClientPage(confirmationContent){
     cy.get(CREATE_CLIENT_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function navigateToEditClientPage(confirmationContent){
     cy.get(MANAGE_CLIENT_BTN).click()
+    cy.wait(200)
     cy.get(EDIT_CLIENT_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function deleteClient(confirmationContent){
     cy.get(MANAGE_CLIENT_BTN).click()
+    cy.wait(200)
     cy.get(DELETE_CLIENT_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function returnToIndexPage(confirmationContent){
     cy.get(BACK_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 

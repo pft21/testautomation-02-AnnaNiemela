@@ -14,40 +14,44 @@ const DELETE_BTN = 'h2 > .btn'
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
     cy.get(LOGOUT_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 function editStartDate(startDate){
-    cy.get(EDIT_START_DATE_FIELD).clear().type(startDate)
+    cy.get(EDIT_START_DATE_FIELD).clear().wait(100).type(startDate)
 }
 
 function editEndDate(endDate){
-    cy.get(EDIT_END_DATE_FIELD).clear().type(endDate)
+    cy.get(EDIT_END_DATE_FIELD).clear().wait(100).type(endDate)
 }
 
 function editClient(client){
-    cy.get(EDIT_CLIENT_DROPDOWN_LIST).select(client)
+    cy.get(EDIT_CLIENT_DROPDOWN_LIST).wait(100).select(client)
 }
 
 function editRoom(room){
-    cy.get(EDIT_ROOM_DROPDOWN_LIST).select(room)
+    cy.get(EDIT_ROOM_DROPDOWN_LIST).wait(100).select(room)
 }
 
 function editBill(bill){
-    cy.get(EDIT_BILL_DROPDOWN_LIST).select(bill)
+    cy.get(EDIT_BILL_DROPDOWN_LIST).wait(100).select(bill)
 }
 
 function saveReservation(confirmationContent){
     cy.get(SAVE_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function returnToReservationsPage(confirmationContent){
     cy.get(BACK_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
 function deleteReservation(confirmationContent){
     cy.get(DELETE_BTN).click()
+    cy.wait(200)
     cy.contains(confirmationContent)
 }
 
