@@ -28,14 +28,14 @@ function returnToIndexPage(confirmationContent){
     cy.contains(confirmationContent)
 }
 
-function verifyLastRoom(floornumber, roomnumber, category, availability, price, feature){
+function verifyLastRoom(floornumber, roomnumber, categoryOption, availability, price, featuresOption){
     cy.get(LAST_ROOM)
     .should('contain', floornumber)
     .and('contain', roomnumber)
-    .and('contain', category)
+    .and('contain', categoryOption)
     .and('contain', availability)
     .and('contain', price)
-    .and('contain', feature)
+    .and('contain', featuresOption)
 }
 
 function checkForNoCategory(){

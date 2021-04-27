@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+var faker = require('faker');
+
 // Elements
 const LOGOUT_BTN = '.user > .btn'
 const CATEGORY_DROPDOWN_LIST = ':nth-child(1) > select'
@@ -17,8 +19,9 @@ function performLogout(confirmationContent){
     cy.contains(confirmationContent)
 }
 
-function chooseCategory(category){
-    cy.get(CATEGORY_DROPDOWN_LIST).select(category)
+function chooseCategory(categoryOption){
+   cy.get(CATEGORY_DROPDOWN_LIST).select(categoryOption)
+
 }
 
 function addRoomNumber(roomnumber){
@@ -37,8 +40,8 @@ function addPrice(price){
     cy.get(PRICE_FIELD).type(price)
 }
 
-function chooseFeatures(features){
-    cy.get(FEATURES_SELECTIONS).select(features)
+function chooseFeatures(featuresOption){
+    cy.get(FEATURES_SELECTIONS).select(featuresOption)
 }
 
 function saveRoom(confirmationContent){
@@ -60,5 +63,20 @@ module.exports = {
     chooseAsAvailable,
     addPrice,
     chooseFeatures,
-    saveRoom,returnToRoomsPage
+    saveRoom,
+    returnToRoomsPage
 }
+
+
+// Different solution for random category
+// Did not work to use the verify function from another page, but wanted to save it 
+
+    //cy.get(CATEGORY_OPTIONS).last().invoke('index').then((i) => {
+      //  let count = i
+
+       // let randomCategory = faker.datatype.number(count);
+
+       // cy.get(CATEGORY_OPTIONS).eq(randomCategory).invoke('val').then((val)=>{      
+          //  cy.get(CATEGORY_DROPDOWN_LIST).select(val)
+       // })
+   // })

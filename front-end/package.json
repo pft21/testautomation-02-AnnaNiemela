@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
-    "clean-reports":"rm -rf cypress/results",
-    "clean-all-reports":"rm -rf cypress/results && rm ~/Desktop/cypress-test-hotel/front-end/mochawesome.json && rm -rf ~/Desktop/cypress-test-hotel/front-end/mochawesome-report",
+    "clean-reports": "rm -rf cypress/results",
+    "clean-all-reports": "rm -rf cypress/results && rm ~/Desktop/cypress-test-hotel/front-end/mochawesome.json && rm -rf ~/Desktop/cypress-test-hotel/front-end/mochawesome-report",
     "merge-reports": "npx mochawesome-merge cypress/results/*.json > mochawesome.json",
     "generate-report": "npx marge mochawesome.json",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^7.1.0",
+    "faker": "^5.5.3",
     "mochawesome": "^6.2.2",
     "mochawesome-merge": "^4.2.0",
     "mochawesome-report-generator": "^5.2.0"
