@@ -15,68 +15,61 @@ const BACK_BTN = '[href="/rooms"]'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click()
+    cy.get(LOGOUT_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
-function chooseCategory(categoryOption){
-   cy.get(CATEGORY_DROPDOWN_LIST).select(categoryOption)
+function createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature){
+    if (randomRoomNumber > 0) {
+        cy.get(ROOM_NUMBER_FIELD).wait(100).type(randomRoomNumber)
+        } else {
+        }
 
-}
+    if (randomFloorNumber > 0) {
+        cy.get(FLOOR_NUMBER_FIELD).wait(100).type(randomFloorNumber)
+        } else {
+        }
+        
+    if (randomPrice > 0) {
+        cy.get(PRICE_FIELD).wait(100).type(randomPrice)
+        } else {
+        }
 
-function addRoomNumber(roomnumber){
-    cy.get(ROOM_NUMBER_FIELD).type(roomnumber)
-}
+    if (randomCategory == 'double' || randomCategory == 'single' || randomCategory == 'twin') {
+        cy.get(CATEGORY_DROPDOWN_LIST).wait(100).select(randomCategory)
+        } else {
+        }
 
-function addFloorNumber(floornumber){
-    cy.get(FLOOR_NUMBER_FIELD).type(floornumber)
-} 
+    if (randomAvailability == 'true') {
+        cy.get(AVAILABILITY_CHECKBOX).wait(100).click()
+        } else {
+        }
+        
+    if (randomAvailability == 'false') {
+        cy.get(AVAILABILITY_CHECKBOX).wait(100).click().wait(100).click()
+        } else {
+        }
 
-function chooseAsAvailable(){
-    cy.get(AVAILABILITY_CHECKBOX).click()
-}
-
-function addPrice(price){
-    cy.get(PRICE_FIELD).type(price)
-}
-
-function chooseFeatures(featuresOption){
-    cy.get(FEATURES_SELECTIONS).select(featuresOption)
-}
+    if (randomFeature == 'balcony' || randomFeature == 'ensuite' || randomFeature == 'Sea View' || randomFeature == 'penthouse') {
+        cy.get(FEATURES_SELECTIONS).wait(100).select(randomFeature)
+        } else {
+        }
+ } 
 
 function saveRoom(confirmationContent){
-    cy.get(SAVE_BTN).click()
+    cy.get(SAVE_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
 function returnToRoomsPage(confirmationContent){
-    cy.get(BACK_BTN).click()
+    cy.get(BACK_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
 // Exporting functions
 module.exports = {
     performLogout,
-    chooseCategory,
-    addRoomNumber,
-    addFloorNumber,
-    chooseAsAvailable,
-    addPrice,
-    chooseFeatures,
+    createRoom,
     saveRoom,
     returnToRoomsPage
 }
-
-
-// Different solution for random category
-// Did not work to use the verify function from another page, but wanted to save it 
-
-    //cy.get(CATEGORY_OPTIONS).last().invoke('index').then((i) => {
-      //  let count = i
-
-       // let randomCategory = faker.datatype.number(count);
-
-       // cy.get(CATEGORY_OPTIONS).eq(randomCategory).invoke('val').then((val)=>{      
-          //  cy.get(CATEGORY_DROPDOWN_LIST).select(val)
-       // })
-   // })

@@ -25,16 +25,16 @@ function deleteRoom(confirmationContent){
     cy.contains(confirmationContent)
 }
 
-function editCategory(category){
-    cy.get(EDIT_CATEGORY_DROPDOWN_LIST).wait(100).select(category)
+function editCategory(randomEditCategory){
+    cy.get(EDIT_CATEGORY_DROPDOWN_LIST).wait(100).select(randomEditCategory)
 }
 
-function editRoomNumber(roomNumber){
-    cy.get(EDIT_ROOM_NUMBER_FIELD).wait(100).clear().type(roomNumber)
+function editRoomNumber(randomEditRoomNumber){
+    cy.get(EDIT_ROOM_NUMBER_FIELD).wait(100).clear().type(randomEditRoomNumber)
 }
 
-function editFloorNumber(floorNumber){
-    cy.get(EDIT_FLOOR_NUMBER_FIELD).wait(100).clear().type(floorNumber)
+function editFloorNumber(randomEditFloorNumber){
+    cy.get(EDIT_FLOOR_NUMBER_FIELD).wait(100).clear().type(randomEditFloorNumber)
 }
 
 function editAvailability(){
@@ -60,7 +60,6 @@ function returnToRoomsPage(confirmationContent){
     cy.wait(200)
     cy.contains(confirmationContent)
 }
-
 
 // Exporting functions
 module.exports = {

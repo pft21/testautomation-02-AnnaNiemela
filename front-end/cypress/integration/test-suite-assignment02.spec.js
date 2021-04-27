@@ -4,20 +4,45 @@ import * as loginPage from "../pages/login-and-index-pages/login-page"
 import * as indexPage from "../pages/login-and-index-pages/index-page"
 import * as roomsPage from "../pages/room-pages/rooms-page"
 import * as createRoomPage from "../pages/room-pages/create-room-page"
+import * as editRoomPage from "../pages/room-pages/edit-room-page"
 
 var faker = require('faker');
+
+// varibles for creating a new room
 let randomFloorNumber = faker.datatype.number(9)+1;
 let randomRoomNumber = faker.datatype.number(30) + (randomFloorNumber * 100);
+let randomAvailabilityIndex = faker.datatype.number(1)
 let randomPrice = faker.commerce.price(5000);
-let randomCategory = faker.datatype.number(2);
-let randomFeature = faker.datatype.number(3);
+let randomCategoryIndex = faker.datatype.number(2);
+let randomFeatureIndex = faker.datatype.number(3);
 
 var categoryArray = ['double', 'single', 'twin']
-var categoryOption = categoryArray[randomCategory]
+var randomCategory = categoryArray[randomCategoryIndex]
 
-var featuresArray = ['balcony', 'ensuite', 'sea view', 'penthouse']
-var featuresOption = featuresArray[randomFeature]
+var availabilityArray = ['true', 'false']
+var randomAvailability = availabilityArray[randomAvailabilityIndex]
 
+var featuresArray = ['balcony', 'ensuite', 'Sea View', 'penthouse']
+var randomFeature = featuresArray[randomFeatureIndex]
+
+var featuresArrayVerify = ['balcony', 'ensuite', 'sea view', 'penthouse'] 
+var randomFeaturesVerify = featuresArrayVerify[randomFeatureIndex]
+
+//variables for editing a room
+let randomFloorNumberEdit = faker.datatype.number(9)+1;
+let randomRoomNumberEdit = faker.datatype.number(30) + (randomFloorNumberEdit * 100);
+let randomPriceEdit = faker.commerce.price(5000);
+let randomCategoryEditIndex = faker.datatype.number(2);
+let randomFeatureEditIndex = faker.datatype.number(3);
+
+var categoryArrayEdit = ['double', 'single', 'twin']
+var randomCategoryEdit = categoryArrayEdit[randomCategoryEditIndex]
+
+var featuresArrayEdit = ['balcony', 'ensuite', 'Sea View', 'penthouse']
+var randomFeatureEdit = featuresArrayEdit[randomFeatureEditIndex]
+
+var featuresArrayVerifyEdit = ['balcony', 'ensuite', 'sea view', 'penthouse'] 
+var randomFeaturesVerifyEdit = featuresArrayVerifyEdit[randomFeatureEditIndex]
 
 describe('Test suite with Page-objects - Assignment02', () =>{
 
@@ -27,6 +52,7 @@ describe('Test suite with Page-objects - Assignment02', () =>{
         loginPage.performValidLogin('tester01', 'GteteqbQQgSr88SwNExUQv2ydb7xuf8c', 'Tester Hotel Overview')
     })
 
+    // ORIGINAL TEST CASES
     it('View Rooms', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.performLogout('Login')
@@ -35,27 +61,18 @@ describe('Test suite with Page-objects - Assignment02', () =>{
     it('Create a room by entering valid input in all fields', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.chooseCategory(categoryOption)
-        createRoomPage.addRoomNumber(randomRoomNumber)
-        createRoomPage.addFloorNumber(randomFloorNumber)
-        createRoomPage.chooseAsAvailable()
-        createRoomPage.addPrice(randomPrice)
-        createRoomPage.chooseFeatures(featuresOption)
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
         createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyLastRoom(randomFloorNumber, randomRoomNumber, categoryOption, 'true', (randomPrice -.00) +'kr', featuresOption)
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
         roomsPage.performLogout('Login')
     })
 
     it('Create a room without choosing a category', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.addRoomNumber(randomRoomNumber)
-        createRoomPage.addFloorNumber(randomFloorNumber)
-        createRoomPage.chooseAsAvailable()
-        createRoomPage.addPrice(randomPrice)
-        createRoomPage.chooseFeatures(featuresOption)
+        createRoomPage.createRoom('', randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
         createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyLastRoom(randomFloorNumber, randomRoomNumber, '', 'true', (randomPrice -.00) +'kr', featuresOption)
+        roomsPage.verifyNewRoom('', randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
         roomsPage.checkForNoCategory()
         roomsPage.performLogout('Login')
     })
@@ -63,11 +80,7 @@ describe('Test suite with Page-objects - Assignment02', () =>{
     it('Create a room without entering a roomnumber', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.chooseCategory(categoryOption)
-        createRoomPage.addFloorNumber(randomFloorNumber)
-        createRoomPage.chooseAsAvailable()
-        createRoomPage.addPrice(randomPrice)
-        createRoomPage.chooseFeatures(featuresOption)
+        createRoomPage.createRoom(randomCategory, '', randomFloorNumber, randomAvailability, randomPrice, randomFeature)
         createRoomPage.saveRoom('Room number must be set')
         createRoomPage.performLogout('Login')
     })
@@ -75,11 +88,7 @@ describe('Test suite with Page-objects - Assignment02', () =>{
     it('Create a room by entering a floor', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.chooseCategory(categoryOption)
-        createRoomPage.addRoomNumber(randomRoomNumber)
-        createRoomPage.chooseAsAvailable()
-        createRoomPage.addPrice(randomPrice)
-        createRoomPage.chooseFeatures(featuresOption)
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, '', randomAvailability, randomPrice, randomFeature)
         createRoomPage.saveRoom('Floor must be set')
         createRoomPage.performLogout('Login')
     })
@@ -87,13 +96,9 @@ describe('Test suite with Page-objects - Assignment02', () =>{
     it('Create room without entering availability', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.chooseCategory(categoryOption)
-        createRoomPage.addRoomNumber(randomRoomNumber)
-        createRoomPage.addFloorNumber(randomFloorNumber)
-        createRoomPage.addPrice(randomPrice)
-        createRoomPage.chooseFeatures(featuresOption)
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, '', randomPrice, randomFeature)
         createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyLastRoom(randomFloorNumber, randomRoomNumber, categoryOption, '', (randomPrice -.00) +'kr', featuresOption)
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, '', (randomPrice -.00) +'kr', randomFeaturesVerify)
         roomsPage.checkForNoAvailability()
         roomsPage.performLogout('Login')
     })
@@ -101,13 +106,9 @@ describe('Test suite with Page-objects - Assignment02', () =>{
     it('Create a room without entering features', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.chooseCategory(categoryOption)
-        createRoomPage.addRoomNumber(randomRoomNumber)
-        createRoomPage.addFloorNumber(randomFloorNumber)
-        createRoomPage.chooseAsAvailable()
-        createRoomPage.addPrice(randomPrice)
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, '')
         createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyLastRoom(randomFloorNumber, randomRoomNumber, categoryOption, 'true', (randomPrice -.00) +'kr', '')
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', '')
         roomsPage.checkForNoFeatures()
         roomsPage.performLogout('Login')
     })
@@ -115,11 +116,7 @@ describe('Test suite with Page-objects - Assignment02', () =>{
     it('Create a room without entering a price', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.chooseCategory(categoryOption)
-        createRoomPage.addRoomNumber(randomRoomNumber)
-        createRoomPage.addFloorNumber(randomFloorNumber)
-        createRoomPage.chooseAsAvailable()
-        createRoomPage.chooseFeatures(featuresOption)
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, '', randomFeature)
         createRoomPage.saveRoom('Price must be a whole number')
         createRoomPage.performLogout('Login')
     })
@@ -135,6 +132,85 @@ describe('Test suite with Page-objects - Assignment02', () =>{
         indexPage.navigateToRooms('Rooms')
         roomsPage.returnToIndexPage('Tester Hotel Overview')
         indexPage.performLogout('Login')
+    })
+
+    // EXTRA TEST CASES
+    it('Edit the category of a room', () => {
+        indexPage.navigateToRooms('Rooms')
+        roomsPage.navigateToCreateRoom('New Room')
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
+        createRoomPage.saveRoom('Rooms')
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
+        roomsPage.navigateToEditRoomPage('Room: ')
+        editRoomPage.editCategory(randomCategoryEdit)
+        editRoomPage.saveEdit('Rooms')
+        roomsPage.verifyPriceEdit(randomCategoryEdit)
+        roomsPage.performLogout('Login')
+    })
+
+    it('Edit the room number of a room', () => {
+        indexPage.navigateToRooms('Rooms')
+        roomsPage.navigateToCreateRoom('New Room')
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
+        createRoomPage.saveRoom('Rooms')
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
+        roomsPage.navigateToEditRoomPage('Room: ')
+        editRoomPage.editRoomNumber(randomRoomNumberEdit)
+        editRoomPage.saveEdit('Rooms')
+        roomsPage.verifyRoomNumberEdit(randomRoomNumberEdit)
+        roomsPage.performLogout('Login')
+    })
+
+    it('Edit the floor number of a room', () => {
+        indexPage.navigateToRooms('Rooms')
+        roomsPage.navigateToCreateRoom('New Room')
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
+        createRoomPage.saveRoom('Rooms')
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
+        roomsPage.navigateToEditRoomPage('Room: ')
+        editRoomPage.editFloorNumber(randomFloorNumberEdit)
+        editRoomPage.saveEdit('Rooms')
+        roomsPage.verifyFloorNumberEdit(randomFloorNumberEdit)
+        roomsPage.performLogout('Login')
+    })
+
+    it('Edit the availability of a room', () => {
+        indexPage.navigateToRooms('Rooms')
+        roomsPage.navigateToCreateRoom('New Room')
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
+        createRoomPage.saveRoom('Rooms')
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
+        roomsPage.navigateToEditRoomPage('Room: ')
+        editRoomPage.editAvailability(randomAvailability)
+        editRoomPage.saveEdit('Rooms')
+        roomsPage.verifyAvailabilityEdit(randomAvailability)
+        roomsPage.performLogout('Login')
+    })
+
+    it('Edit the price of a room', () => {
+        indexPage.navigateToRooms('Rooms')
+        roomsPage.navigateToCreateRoom('New Room')
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
+        createRoomPage.saveRoom('Rooms')
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
+        roomsPage.navigateToEditRoomPage('Room: ')
+        editRoomPage.editPrice(randomPriceEdit)
+        editRoomPage.saveEdit('Rooms')
+        roomsPage.verifyPriceEdit(randomPriceEdit -.00 + 'kr')
+        roomsPage.performLogout('Login')
+    })
+
+    it('Edit the feature of a room', () => {
+        indexPage.navigateToRooms('Rooms')
+        roomsPage.navigateToCreateRoom('New Room')
+        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
+        createRoomPage.saveRoom('Rooms')
+        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
+        roomsPage.navigateToEditRoomPage('Room: ')
+        editRoomPage.editFeatures(randomFeatureEdit)
+        editRoomPage.saveEdit('Rooms')
+        roomsPage.verifyFeatureEdit(randomFeatureEdit)
+        roomsPage.performLogout('Login')
     })
 
 })

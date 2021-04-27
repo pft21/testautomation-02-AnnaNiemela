@@ -14,53 +14,86 @@ const EDIT_BTN = '.menu > :nth-child(1)'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click()
+    cy.get(LOGOUT_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
 function navigateToCreateRoom(confirmationContent){
-    cy.get(CREATE_ROOM_BTN).click()
+    cy.get(CREATE_ROOM_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
 function returnToIndexPage(confirmationContent){
-    cy.get(BACK_BTN).click()
+    cy.get(BACK_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
-function verifyLastRoom(floornumber, roomnumber, categoryOption, availability, price, featuresOption){
-    cy.get(LAST_ROOM)
-    .should('contain', floornumber)
-    .and('contain', roomnumber)
-    .and('contain', categoryOption)
-    .and('contain', availability)
-    .and('contain', price)
-    .and('contain', featuresOption)
+function verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeaturesVerify){
+    cy.get(LAST_ROOM).wait(100)
+    .should('contain', randomCategory).wait(100)
+    .and('contain', randomRoomNumber).wait(100)
+    .and('contain', randomFloorNumber).wait(100)
+    .and('contain', randomAvailability).wait(100)
+    .and('contain', randomPrice).wait(100)
+    .and('contain', randomFeaturesVerify).wait(100)
+}
+
+function verifyCategoryEdit(randomCategoryEdit){
+    cy.get(LAST_ROOM).wait(100)
+    .should('contain', randomCategoryEdit).wait(100)
+}
+
+function verifyRoomNumberEdit(randomRoomNumberEdit){
+    cy.get(LAST_ROOM).wait(100)
+    .should('contain', randomRoomNumberEdit).wait(100)
+}
+
+function verifyFloorNumberEdit(randomFloorNumberEdit){
+    cy.get(LAST_ROOM).wait(100)
+    .should('contain', randomFloorNumberEdit).wait(100)
+}
+
+function verifyAvailabilityEdit(randomAvailability){
+    if (randomAvailability == 'false' || randomAvailability == '') {
+        cy.get(LAST_ROOM).should('contain', 'true')
+        } else {
+            cy.get(LAST_ROOM).should('contain', 'false')
+        }
+    }
+
+function verifyFeatureEdit(randomFeatureEdit){
+    cy.get(LAST_ROOM).wait(100)
+    .should('contain', randomFeatureEdit).wait(100)
+    }
+
+function verifyPriceEdit(randomPriceEdit){
+    cy.get(LAST_ROOM).wait(100)
+    .should('contain', randomPriceEdit).wait(100)
 }
 
 function checkForNoCategory(){
-    cy.get(CATEGORY)
+    cy.get(CATEGORY).wait(100)
     .should('have.text', 'Category: ')
 }
 
 function checkForNoAvailability(){
-    cy.get(AVAILABILITY)
+    cy.get(AVAILABILITY).wait(100)
     .should('have.text', 'Available: ')
 }
 
 function checkForNoFeatures(){
-    cy.get(FEATURES)
+    cy.get(FEATURES).wait(100)
     .should('have.text', ' Features: ')
 }
 
 function deleteRoom(){
-    cy.get(MANAGE_ROOM_BTN).click() 
+    cy.get(MANAGE_ROOM_BTN).click().wait(100)
     cy.get(DELETE_BTN).click()
 }
 
 function navigateToEditRoomPage(confirmationContent){
-    cy.get(MANAGE_ROOM_BTN).click() 
-    cy.get(EDIT_BTN).click()
+    cy.get(MANAGE_ROOM_BTN).click().wait(100)
+    cy.get(EDIT_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
@@ -69,7 +102,13 @@ module.exports = {
     performLogout,
     navigateToCreateRoom,
     returnToIndexPage,
-    verifyLastRoom,
+    verifyNewRoom,
+    verifyCategoryEdit,
+    verifyRoomNumberEdit,
+    verifyFloorNumberEdit,
+    verifyAvailabilityEdit,
+    verifyFeatureEdit,
+    verifyPriceEdit,
     checkForNoCategory,
     checkForNoAvailability,
     checkForNoFeatures,
