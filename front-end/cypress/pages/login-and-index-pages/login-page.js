@@ -13,8 +13,8 @@ function checkLoginPageTitle(){
 }
 
 function performValidLogin(username, password, confirmationContent){
-    cy.get(USERNAME_TEXTFIELD).type(username)
-    cy.get(PASSWORD_TEXTFIELD).type(password)
+    cy.get(USERNAME_TEXTFIELD).wait(100).type(username)
+    cy.get(PASSWORD_TEXTFIELD).wait(100).type(password)
     cy.get(SUBMIT_BTN).click()
     cy.contains(confirmationContent)
 }

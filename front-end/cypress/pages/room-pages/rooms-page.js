@@ -5,6 +5,7 @@ const LOGOUT_BTN = '.user > .btn'
 const CREATE_ROOM_BTN = 'h2 > .btn'
 const BACK_BTN = ':nth-child(3) > .btn'
 const LAST_ROOM = '.rooms > :nth-last-child(1)'
+const LIST_OF_ROOMS = '.rooms'
 const CATEGORY = ':nth-last-child(1) > :nth-child(2) > .category'
 const AVAILABILITY = ':nth-last-child(1) > :nth-child(2) > .available'
 const FEATURES = ':nth-last-child(1) > :nth-child(2) > .features'
@@ -20,6 +21,12 @@ function performLogout(confirmationContent){
 
 function navigateToCreateRoom(confirmationContent){
     cy.get(CREATE_ROOM_BTN).click().wait(200)
+    cy.contains(confirmationContent)
+}
+
+function navigateToEditRoomPage(confirmationContent){
+    cy.get(MANAGE_ROOM_BTN).click().wait(100)
+    cy.get(EDIT_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
@@ -39,18 +46,15 @@ function verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, rand
 }
 
 function verifyCategoryEdit(randomCategoryEdit){
-    cy.get(LAST_ROOM).wait(100)
-    .should('contain', randomCategoryEdit).wait(100)
+    cy.get(LAST_ROOM).wait(100).should('contain', randomCategoryEdit)
 }
 
 function verifyRoomNumberEdit(randomRoomNumberEdit){
-    cy.get(LAST_ROOM).wait(100)
-    .should('contain', randomRoomNumberEdit).wait(100)
+    cy.get(LAST_ROOM).wait(100).should('contain', randomRoomNumberEdit)
 }
 
 function verifyFloorNumberEdit(randomFloorNumberEdit){
-    cy.get(LAST_ROOM).wait(100)
-    .should('contain', randomFloorNumberEdit).wait(100)
+    cy.get(LAST_ROOM).wait(100).should('contain', randomFloorNumberEdit)
 }
 
 function verifyAvailabilityEdit(randomAvailability){
@@ -61,46 +65,40 @@ function verifyAvailabilityEdit(randomAvailability){
         }
     }
 
-function verifyFeatureEdit(randomFeatureEdit){
-    cy.get(LAST_ROOM).wait(100)
-    .should('contain', randomFeatureEdit).wait(100)
+function verifyFeatureEdit(randomFeaturesVerifyEdit){
+    cy.get(LAST_ROOM).wait(100).should('contain', randomFeaturesVerifyEdit)
     }
 
 function verifyPriceEdit(randomPriceEdit){
-    cy.get(LAST_ROOM).wait(100)
-    .should('contain', randomPriceEdit).wait(100)
+    cy.get(LAST_ROOM).wait(100).should('contain', randomPriceEdit)
 }
 
 function checkForNoCategory(){
-    cy.get(CATEGORY).wait(100)
-    .should('have.text', 'Category: ')
+    cy.get(CATEGORY).wait(100).should('have.text', 'Category: ')
 }
 
 function checkForNoAvailability(){
-    cy.get(AVAILABILITY).wait(100)
-    .should('have.text', 'Available: ')
+    cy.get(AVAILABILITY).wait(100).should('have.text', 'Available: ')
 }
 
 function checkForNoFeatures(){
-    cy.get(FEATURES).wait(100)
-    .should('have.text', ' Features: ')
+    cy.get(FEATURES).wait(100).should('have.text', ' Features: ')
 }
 
 function deleteRoom(){
-    cy.get(MANAGE_ROOM_BTN).click().wait(100)
-    cy.get(DELETE_BTN).click()
-}
-
-function navigateToEditRoomPage(confirmationContent){
-    cy.get(MANAGE_ROOM_BTN).click().wait(100)
-    cy.get(EDIT_BTN).click().wait(200)
-    cy.contains(confirmationContent)
+    cy.get(LIST_OF_ROOMS).children().last().invoke('index').then((i) => {
+        let quantity = i + 1
+        cy.get(MANAGE_ROOM_BTN).click().wait(100)
+        cy.get(DELETE_BTN).click().wait(100)
+        cy.get(LIST_OF_ROOMS).children().should('have.length', (quantity - 1))
+    }) 
 }
 
 // Exporting functions
 module.exports = {
     performLogout,
     navigateToCreateRoom,
+    navigateToEditRoomPage,
     returnToIndexPage,
     verifyNewRoom,
     verifyCategoryEdit,
@@ -113,5 +111,4 @@ module.exports = {
     checkForNoAvailability,
     checkForNoFeatures,
     deleteRoom,
-    navigateToEditRoomPage
 }

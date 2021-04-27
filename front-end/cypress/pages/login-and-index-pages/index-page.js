@@ -9,8 +9,7 @@ const RESERVATIONS_PAGE_BTN = '.blocks > :nth-child(4) > .btn'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click()
-    cy.wait(200)
+    cy.get(LOGOUT_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 

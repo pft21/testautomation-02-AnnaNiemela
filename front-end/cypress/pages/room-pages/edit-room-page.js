@@ -14,14 +14,12 @@ const BACK_BTN = '[href="/rooms"]'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click()
-    cy.wait(200)
+    cy.get(LOGOUT_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
 function deleteRoom(confirmationContent){
-    cy.get(DELETE_BTN).click()
-    cy.wait(200)
+    cy.get(DELETE_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
@@ -50,14 +48,12 @@ function editFeatures(features){
 }
 
 function saveEdit(confirmationContent){
-    cy.get(SAVE_BTN).click()
-    cy.wait(200)
+    cy.get(SAVE_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 
 function returnToRoomsPage(confirmationContent){
-    cy.get(BACK_BTN).click()
-    cy.wait(200)
+    cy.get(BACK_BTN).click().wait(200)
     cy.contains(confirmationContent)
 }
 

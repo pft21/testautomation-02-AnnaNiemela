@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
+    "run-mochawesome": "npx cypress run --reporter mochawesome",
     "clean-reports": "rm -rf cypress/results",
     "clean-all-reports": "rm -rf cypress/results && rm ~/Desktop/cypress-test-hotel/front-end/mochawesome.json && rm -rf ~/Desktop/cypress-test-hotel/front-end/mochawesome-report",
     "merge-reports": "npx mochawesome-merge cypress/results/*.json > mochawesome.json",
