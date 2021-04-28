@@ -4,7 +4,6 @@ import * as loginPage from "../pages/login-and-index-pages/login-page"
 import * as indexPage from "../pages/login-and-index-pages/index-page"
 import * as roomsPage from "../pages/room-pages/rooms-page"
 import * as createRoomPage from "../pages/room-pages/create-room-page"
-import * as editRoomPage from "../pages/room-pages/edit-room-page"
 
 var faker = require('faker');
 
@@ -126,95 +125,6 @@ describe('Test suite with Page-objects - Assignment02', () =>{
         indexPage.navigateToRooms('Rooms')
         roomsPage.returnToIndexPage('Tester Hotel Overview')
         indexPage.performLogout('Login')
-    })
-
-    // EXTRA 7 TEST CASES FOR ROOMS
-    it('Delete room on on the page Rooms', () => {
-        indexPage.navigateToRooms('Rooms')
-        roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
-        createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
-        roomsPage.deleteRoom()
-        roomsPage.performLogout('Login')
-    })
-
-    it('Edit the category of a room', () => {
-        indexPage.navigateToRooms('Rooms')
-        roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
-        createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
-        roomsPage.navigateToEditRoomPage('Room: ')
-        editRoomPage.editCategory(randomCategoryEdit)
-        editRoomPage.saveEdit('Rooms')
-        roomsPage.verifyPriceEdit(randomCategoryEdit)
-        roomsPage.performLogout('Login')
-    })
-
-    it('Edit the room number of a room', () => {
-        indexPage.navigateToRooms('Rooms')
-        roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
-        createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
-        roomsPage.navigateToEditRoomPage('Room: ')
-        editRoomPage.editRoomNumber(randomRoomNumberEdit)
-        editRoomPage.saveEdit('Rooms')
-        roomsPage.verifyRoomNumberEdit(randomRoomNumberEdit)
-        roomsPage.performLogout('Login')
-    })
-
-    it('Edit the floor number of a room', () => {
-        indexPage.navigateToRooms('Rooms')
-        roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
-        createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
-        roomsPage.navigateToEditRoomPage('Room: ')
-        editRoomPage.editFloorNumber(randomFloorNumberEdit)
-        editRoomPage.saveEdit('Rooms')
-        roomsPage.verifyFloorNumberEdit(randomFloorNumberEdit)
-        roomsPage.performLogout('Login')
-    })
-
-    it('Edit the availability of a room', () => {
-        indexPage.navigateToRooms('Rooms')
-        roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
-        createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
-        roomsPage.navigateToEditRoomPage('Room: ')
-        editRoomPage.editAvailability(randomAvailability)
-        editRoomPage.saveEdit('Rooms')
-        roomsPage.verifyAvailabilityEdit(randomAvailability)
-        roomsPage.performLogout('Login')
-    })
-
-    it('Edit the price of a room', () => {
-        indexPage.navigateToRooms('Rooms')
-        roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
-        createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
-        roomsPage.navigateToEditRoomPage('Room: ')
-        editRoomPage.editPrice(randomPriceEdit)
-        editRoomPage.saveEdit('Rooms')
-        roomsPage.verifyPriceEdit(randomPriceEdit -.00 + 'kr')
-        roomsPage.performLogout('Login')
-    })
-
-    it('Edit the feature of a room', () => {
-        indexPage.navigateToRooms('Rooms')
-        roomsPage.navigateToCreateRoom('New Room')
-        createRoomPage.createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature)
-        createRoomPage.saveRoom('Rooms')
-        roomsPage.verifyNewRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, (randomPrice -.00) +'kr', randomFeaturesVerify)
-        roomsPage.navigateToEditRoomPage('Room: ')
-        editRoomPage.editFeatures(randomFeatureEdit)
-        editRoomPage.saveEdit('Rooms')
-        roomsPage.verifyFeatureEdit(randomFeaturesVerifyEdit)
-        roomsPage.performLogout('Login')
     })
 
 })
