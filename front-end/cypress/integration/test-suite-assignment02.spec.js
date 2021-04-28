@@ -40,7 +40,7 @@ var randomFeaturesVerifyEdit = featuresArrayVerify[randomFeatureEditIndex]
 
 describe('Test suite with Page-objects - Assignment02', () =>{
 
-    beforeEach (() => {
+    beforeEach ('Visit website and log in with valid credentials', () => {
         cy.visit('http://localhost:3000')
         loginPage.checkLoginPageTitle()
         loginPage.performValidLogin('tester01', 'GteteqbQQgSr88SwNExUQv2ydb7xuf8c', 'Tester Hotel Overview')

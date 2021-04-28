@@ -10,33 +10,30 @@ const DELETE_BTN = 'h2 > .btn'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click()
+    cy.get(LOGOUT_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function editValue(value){
-    cy.get(EDIT_VALUE_FIELD).wait(100).clear().type(value)
+    cy.get(EDIT_VALUE_FIELD).wait(200).clear().type(value)
 }
 
 function editPaid(){
-    cy.get(EDIT_PAID_CHECKBOX).wait(100).click()
+    cy.get(EDIT_PAID_CHECKBOX).wait(200).click()
 }
 
 function saveBill(confirmationContent){
-    cy.get(SAVE_BTN).click()
-    cy.wait(200)
+    cy.get(SAVE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function returnToBillsPage(confirmationContent){
-    cy.get(BACK_BTN).click()
-    cy.wait(200)
+    cy.get(BACK_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function deleteBill(confirmationContent){
-    cy.get(DELETE_BTN).click()
-    cy.wait(200)
+    cy.get(DELETE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 

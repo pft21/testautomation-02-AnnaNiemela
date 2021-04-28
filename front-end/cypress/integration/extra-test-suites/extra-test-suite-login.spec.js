@@ -22,17 +22,25 @@ describe('Test suite with Page-objects - Login', () =>{
 
     it('Perform login with invalid credentials', () => {
         loginPage.checkLoginPageTitle()
-        loginPage.performValidLogin(randomUsername, randomPassword, 'Bad username or password')
+        loginPage.performInvalidLogin(randomUsername, randomPassword, 'Bad username or password')
     })
 
     it('Perform login with invalid username', () => {
         loginPage.checkLoginPageTitle()
-        loginPage.performValidLogin(randomUsername, 'hello123', 'Bad username or password')
+        loginPage.performInvalidLogin(randomUsername, 'hello123', 'Bad username or password')
     })
 
     it('Perform login with invalid password', () => {
         loginPage.checkLoginPageTitle()
-        loginPage.performValidLogin('tester01', randomPassword, 'Bad username or password')
+        loginPage.performInvalidLogin('tester01', randomPassword, 'Bad username or password')
+    })
+    it('Perform login without entering username', () => {
+        loginPage.checkLoginPageTitle()
+        loginPage.performLoginNoUsername('GteteqbQQgSr88SwNExUQv2ydb7xuf8c', 'Bad username or password')
+    })
+    it('Perform login without entering password', () => {
+        loginPage.checkLoginPageTitle()
+        loginPage.performLoginNoPassword('tester01', 'Bad username or password')
     })
 
 

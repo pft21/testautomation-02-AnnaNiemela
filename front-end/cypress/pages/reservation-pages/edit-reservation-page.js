@@ -13,45 +13,59 @@ const DELETE_BTN = 'h2 > .btn'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click()
-    cy.wait(200)
+    cy.get(LOGOUT_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
-function editStartDate(startDate){
-    cy.get(EDIT_START_DATE_FIELD).clear().wait(100).type(startDate)
+function editStartDate(randomStartDate2){
+    cy.get(EDIT_START_DATE_FIELD).clear().wait(200).type(randomStartDate2)
 }
 
-function editEndDate(endDate){
-    cy.get(EDIT_END_DATE_FIELD).clear().wait(100).type(endDate)
+function editEndDate(randomStartDate2){
+    cy.get(EDIT_END_DATE_FIELD).clear().wait(200).type(randomStartDate2)
 }
 
-function editClient(client){
-    cy.get(EDIT_CLIENT_DROPDOWN_LIST).wait(100).select(client)
+function editClient(randomName1){
+    cy.get(EDIT_CLIENT_DROPDOWN_LIST).children().last().invoke('index').then((i) => {
+        let client = i-1
+        cy.get(EDIT_CLIENT_DROPDOWN_LIST).children().eq(client).invoke('val').then((val) => {  
+            cy.get(EDIT_CLIENT_DROPDOWN_LIST).wait(200).select(val)
+        })
+        cy.get(EDIT_CLIENT_DROPDOWN_LIST).children().eq(client).should('not.contain', randomName1)
+    })
 }
 
-function editRoom(room){
-    cy.get(EDIT_ROOM_DROPDOWN_LIST).wait(100).select(room)
+function editRoom(randomRoomNumber1){
+    cy.get(EDIT_ROOM_DROPDOWN_LIST).children().last().invoke('index').then((i) => {
+        let room = i-1
+        cy.get(EDIT_ROOM_DROPDOWN_LIST).children().eq(room).invoke('val').then((val) => {  
+            cy.get(EDIT_ROOM_DROPDOWN_LIST).wait(200).select(val)
+        })
+        cy.get(EDIT_ROOM_DROPDOWN_LIST).children().eq(room).should('not.contain', randomRoomNumber1)  
+    })
 }
 
-function editBill(bill){
-    cy.get(EDIT_BILL_DROPDOWN_LIST).wait(100).select(bill)
+function editBill(){
+    cy.get(EDIT_BILL_DROPDOWN_LIST).children().last().invoke('index').then((i) => {  
+        let bill = i-1
+        cy.get(EDIT_BILL_DROPDOWN_LIST).children().eq(bill).invoke('val').then((val) => {  
+        cy.get(EDIT_BILL_DROPDOWN_LIST).wait(200).select(val)
+        })
+        cy.get(EDIT_BILL_DROPDOWN_LIST).children().eq(bill).should('not.eq', i)
+    })
 }
 
 function saveReservation(confirmationContent){
-    cy.get(SAVE_BTN).click()
-    cy.wait(200)
+    cy.get(SAVE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function returnToReservationsPage(confirmationContent){
-    cy.get(BACK_BTN).click()
-    cy.wait(200)
+    cy.get(BACK_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function deleteReservation(confirmationContent){
-    cy.get(DELETE_BTN).click()
-    cy.wait(200)
+    cy.get(DELETE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 

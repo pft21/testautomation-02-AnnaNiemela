@@ -11,37 +11,34 @@ const DELETE_BTN = 'h2 > .btn'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click().wait(200)
+    cy.get(LOGOUT_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
-function editName(name){
-    cy.get(EDIT_NAME_FIELD).wait(100).clear().type(name)
+function editName(randomName2){
+    cy.get(EDIT_NAME_FIELD).wait(200).clear().type(randomName2)
 }
 
-function editEmail(email){
-    cy.get(EDIT_EMAIL_FIELD).wait(100).clear().type(email)
+function editEmail(randomEmail2){
+    cy.get(EDIT_EMAIL_FIELD).wait(200).clear().type(randomEmail2)
 }
 
-function editTelephone (telephone){
-    cy.get(EDIT_TELEPHONE_FIELD).wait(100).clear().type(telephone)
+function editTelephone (randomTelephone2){
+    cy.get(EDIT_TELEPHONE_FIELD).wait(200).clear().type(randomTelephone2)
 }
 
 function saveClient(confirmationContent){
-    cy.get(SAVE_BTN).click()
-    cy.wait(200)
+    cy.get(SAVE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function returnToClientsPage(confirmationContent){
-    cy.get(BACK_BTN).click()
-    cy.wait(200)
+    cy.get(BACK_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function deleteClient(confirmationContent){
-    cy.get(DELETE_BTN).click()
-    cy.wait(200)
+    cy.get(DELETE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 

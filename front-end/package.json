@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
-    "run-mochawesome": "npx cypress run --reporter mochawesome",
+    "cypress:run": "npx cypress run --reporter mochawesome",
     "clean-reports": "rm -rf cypress/results",
     "clean-all-reports": "rm -rf cypress/results && rm ~/Desktop/cypress-test-hotel/front-end/mochawesome.json && rm -rf ~/Desktop/cypress-test-hotel/front-end/mochawesome-report",
     "merge-reports": "npx mochawesome-merge cypress/results/*.json > mochawesome.json",
-    "generate-report": "npx marge mochawesome.json",
+    "generate-html": "npx marge mochawesome.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

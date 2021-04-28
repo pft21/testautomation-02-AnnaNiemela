@@ -12,36 +12,36 @@ const LIST_OF_CLIENTS = '.clients'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click().wait(200)
+    cy.get(LOGOUT_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function navigateToCreateClientPage(confirmationContent){
-    cy.get(CREATE_CLIENT_BTN).click().wait(200)
+    cy.get(CREATE_CLIENT_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function navigateToEditClientPage(confirmationContent){
-    cy.get(MANAGE_CLIENT_BTN).click().wait(100)
-    cy.get(EDIT_CLIENT_BTN).click().wait(200)
+    cy.get(MANAGE_CLIENT_BTN).click().wait(200)
+    cy.get(EDIT_CLIENT_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function deleteClient(){
     cy.get(LIST_OF_CLIENTS).children().last().invoke('index').then((i) => {
         let quantity = i + 1
-        cy.get(MANAGE_CLIENT_BTN).click().wait(100)
-        cy.get(DELETE_CLIENT_BTN).click().wait(100)
+        cy.get(MANAGE_CLIENT_BTN).click().wait(200)
+        cy.get(DELETE_CLIENT_BTN).click().wait(500)
         cy.get(LIST_OF_CLIENTS).children().should('have.length', (quantity - 1))
     }) 
 }
 
 function returnToIndexPage(confirmationContent){
-    cy.get(BACK_BTN).click().wait(200)
+    cy.get(BACK_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
-function verifyLastClient(name, email, telephone){
+function verifyNewClient(name, email, telephone){
     cy.get(LAST_CLIENT)
     .should('contain', name)
     .and('contain', email)
@@ -67,7 +67,7 @@ module.exports = {
     navigateToEditClientPage,
     deleteClient,
     returnToIndexPage,
-    verifyLastClient,
+    verifyNewClient,
     verifyNameEdit,
     verifyEmailEdit,
     verifyTelephoneEdit

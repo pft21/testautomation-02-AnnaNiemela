@@ -10,44 +10,30 @@ const BACK_BTN = '[href="/clients"]'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click()
-    cy.wait(200)
+    cy.get(LOGOUT_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
-function addName(name){
-    cy.get(NAME_FIELD).type(name)
-    cy.wait(200)
-}
-
-function addEmail(email){
-    cy.get(EMAIL_FIELD).type(email)
-    cy.wait(200)
-}
-
-function addTelephone (telephone){
-    cy.get(TELEPHONE_FIELD).type(telephone)
-    cy.wait(200)
+function createClient(randomName1, randomEmail1, randomTelephone1){
+    cy.get(NAME_FIELD).wait(200).type(randomName1)
+    cy.get(EMAIL_FIELD).wait(200).type(randomEmail1)
+    cy.get(TELEPHONE_FIELD).wait(200).type(randomTelephone1)
 }
 
 function saveClient(confirmationContent){
-    cy.get(SAVE_BTN).click()
-    cy.wait(200)
+    cy.get(SAVE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function returnToClientsPage(confirmationContent){
-    cy.get(BACK_BTN).click()
-    cy.wait(200)
+    cy.get(BACK_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 // Exporting functions
 module.exports = {
     performLogout,
-    addName,
-    addEmail,
-    addTelephone,
+    createClient,
     saveClient,
     returnToClientsPage
 }

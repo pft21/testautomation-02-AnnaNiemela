@@ -14,46 +14,46 @@ const BACK_BTN = '[href="/rooms"]'
 
 // Functions / Actions / Methods
 function performLogout(confirmationContent){
-    cy.get(LOGOUT_BTN).click().wait(200)
+    cy.get(LOGOUT_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function deleteRoom(confirmationContent){
-    cy.get(DELETE_BTN).click().wait(200)
+    cy.get(DELETE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function editCategory(randomEditCategory){
-    cy.get(EDIT_CATEGORY_DROPDOWN_LIST).wait(100).select(randomEditCategory)
+    cy.get(EDIT_CATEGORY_DROPDOWN_LIST).wait(200).select(randomEditCategory)
 }
 
 function editRoomNumber(randomEditRoomNumber){
-    cy.get(EDIT_ROOM_NUMBER_FIELD).wait(100).clear().type(randomEditRoomNumber)
+    cy.get(EDIT_ROOM_NUMBER_FIELD).wait(200).clear().type(randomEditRoomNumber)
 }
 
 function editFloorNumber(randomEditFloorNumber){
-    cy.get(EDIT_FLOOR_NUMBER_FIELD).wait(100).clear().type(randomEditFloorNumber)
+    cy.get(EDIT_FLOOR_NUMBER_FIELD).wait(200).clear().type(randomEditFloorNumber)
 }
 
 function editAvailability(){
-    cy.get(EDIT_AVAILABILITY_CHECKBOX).wait(100).click()
+    cy.get(EDIT_AVAILABILITY_CHECKBOX).wait(200).click()
 }
 
 function editPrice(price){
-    cy.get(EDIT_PRICE_FIELD).wait(100).clear().type(price)
+    cy.get(EDIT_PRICE_FIELD).wait(200).clear().type(price)
 }
 
 function editFeatures(features){
-    cy.get(EDIT_FEATURES_SELECTIONS).wait(100).select(features)
+    cy.get(EDIT_FEATURES_SELECTIONS).wait(200).select(features)
 }
 
 function saveEdit(confirmationContent){
-    cy.get(SAVE_BTN).click().wait(200)
+    cy.get(SAVE_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 
 function returnToRoomsPage(confirmationContent){
-    cy.get(BACK_BTN).click().wait(200)
+    cy.get(BACK_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 

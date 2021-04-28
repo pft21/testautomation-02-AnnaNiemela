@@ -13,14 +13,38 @@ function checkLoginPageTitle(){
 }
 
 function performValidLogin(username, password, confirmationContent){
-    cy.get(USERNAME_TEXTFIELD).wait(100).type(username)
-    cy.get(PASSWORD_TEXTFIELD).wait(100).type(password)
+    cy.get(USERNAME_TEXTFIELD).wait(200).type(username)
+    cy.get(PASSWORD_TEXTFIELD).wait(200).type(password)
     cy.get(SUBMIT_BTN).click()
     cy.contains(confirmationContent)
 }
 
+function performInvalidLogin(username, password, confirmationContent){
+    cy.get(USERNAME_TEXTFIELD).wait(200).type(username)
+    cy.get(PASSWORD_TEXTFIELD).wait(200).type(password)
+    cy.get(SUBMIT_BTN).click()
+    cy.contains(confirmationContent)
+}
+
+function performLoginNoUsername(password, confirmationContent){
+    cy.get(PASSWORD_TEXTFIELD).wait(200).type(password)
+    cy.get(SUBMIT_BTN).click()
+    cy.contains(confirmationContent)
+}
+
+function performLoginNoPassword(username, confirmationContent){
+    cy.get(USERNAME_TEXTFIELD).wait(200).type(username)
+    cy.get(SUBMIT_BTN).click()
+    cy.contains(confirmationContent)
+}
+
+
+
 // Exporting functions
 module.exports = {
     checkLoginPageTitle,
-    performValidLogin
+    performValidLogin,
+    performInvalidLogin,
+    performLoginNoUsername,
+    performLoginNoPassword
 }
