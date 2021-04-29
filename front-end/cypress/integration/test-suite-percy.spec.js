@@ -9,7 +9,7 @@ import * as editRoomPage from "../pages/room-pages/edit-room-page"
 
 describe('Test suite with Page-objects - Percy', () =>{
 
-    it('View Rooms', () => {
+    it('Use the Back button on the page for creating a new room', () => {
         cy.visit('http://localhost:3000')
         loginPage.checkLoginPageTitle()
         // we are at login page
@@ -27,28 +27,6 @@ describe('Test suite with Page-objects - Percy', () =>{
         // we are at Room page
         cy.log('At rooom page')
         cy.percySnapshot('room page')
-
-        roomsPage.performLogout('Login')
-        cy.wait(3000)
-        // we are at login page
-        cy.log('At login page')
-    })
-
-    it('Use the Back button on the page for creating a new room', () => {
-        cy.visit('http://localhost:3000')
-        loginPage.checkLoginPageTitle()
-        // we are at login page
-        cy.log('At login page')
-    
-        loginPage.performValidLogin('tester01', 'GteteqbQQgSr88SwNExUQv2ydb7xuf8c', 'Tester Hotel Overview')
-        cy.wait(3000)
-        // we are at index page
-        cy.log('At index page')
-
-        indexPage.navigateToRooms('Rooms')
-        cy.wait(3000)
-        // we are at Room page
-        cy.log('At rooom page')
 
         roomsPage.navigateToCreateRoom('New Room')
         cy.wait(3000)

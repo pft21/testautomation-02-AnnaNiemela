@@ -17,27 +17,27 @@ function performLogout(confirmationContent){
 }
 
 function createReservation(randomStartDate1, randomEndDate1){
-    cy.get(START_DATE_FIELD).wait(200).type(randomStartDate1)
-    cy.get(END_DATE_FIELD).wait(200).type(randomEndDate1)
+    cy.get(START_DATE_FIELD).type(randomStartDate1)
+    cy.get(END_DATE_FIELD).type(randomEndDate1)
 
     cy.get(CLIENT_DROPDOWN_LIST).children().last().invoke('index').then((i) => {
         let client = i
         cy.get(CLIENT_DROPDOWN_LIST).children().eq(client).invoke('val').then((val) => {  
-            cy.get(CLIENT_DROPDOWN_LIST).last().wait(200).select(val)
+            cy.get(CLIENT_DROPDOWN_LIST).last().select(val)
         })
     })
 
     cy.get(ROOM_DROPDOWN_LIST).children().last().invoke('index').then((i) => {
         let room = i
         cy.get(ROOM_DROPDOWN_LIST).children().eq(room).invoke('val').then((val) => {  
-            cy.get(ROOM_DROPDOWN_LIST).last().wait(200).select(val)
+            cy.get(ROOM_DROPDOWN_LIST).last().select(val)
         })
     })
 
     cy.get(BILL_DROPDOWN_LIST).children().last().invoke('index').then((i) => {
         let bill = i
         cy.get(BILL_DROPDOWN_LIST).children().eq(bill).invoke('val').then((val) => {  
-            cy.get(BILL_DROPDOWN_LIST).last().wait(200).select(val)
+            cy.get(BILL_DROPDOWN_LIST).last().select(val)
         })
     })
 }

@@ -16,15 +16,15 @@ function performLogout(confirmationContent){
 }
 
 function editName(randomName2){
-    cy.get(EDIT_NAME_FIELD).wait(200).clear().type(randomName2)
+    cy.get(EDIT_NAME_FIELD).clear().type(randomName2)
 }
 
 function editEmail(randomEmail2){
-    cy.get(EDIT_EMAIL_FIELD).wait(200).clear().type(randomEmail2)
+    cy.get(EDIT_EMAIL_FIELD).clear().type(randomEmail2)
 }
 
 function editTelephone (randomTelephone2){
-    cy.get(EDIT_TELEPHONE_FIELD).wait(200).clear().type(randomTelephone2)
+    cy.get(EDIT_TELEPHONE_FIELD).clear().type(randomTelephone2)
 }
 
 function saveClient(confirmationContent){

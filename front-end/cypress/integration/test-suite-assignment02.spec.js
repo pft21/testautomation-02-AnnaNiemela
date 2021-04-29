@@ -7,11 +7,10 @@ import * as createRoomPage from "../pages/room-pages/create-room-page"
 
 var faker = require('faker');
 
-// varibles for creating a new room
 let randomFloorNumber = faker.datatype.number(9)+1;
 let randomRoomNumber = faker.datatype.number(30) + (randomFloorNumber * 100);
-let randomAvailabilityIndex = faker.datatype.number(1)
 let randomPrice = faker.commerce.price(5000);
+let randomAvailabilityIndex = faker.datatype.number(1)
 let randomCategoryIndex = faker.datatype.number(2);
 let randomFeatureIndex = faker.datatype.number(3);
 
@@ -27,16 +26,6 @@ var randomFeature = featuresArray[randomFeatureIndex]
 var featuresArrayVerify = ['balcony', 'ensuite', 'sea view', 'penthouse'] 
 var randomFeaturesVerify = featuresArrayVerify[randomFeatureIndex]
 
-// variables for editing a room
-let randomFloorNumberEdit = faker.datatype.number(9)+1;
-let randomRoomNumberEdit = faker.datatype.number(30) + (randomFloorNumberEdit * 100);
-let randomPriceEdit = faker.commerce.price(5000);
-let randomCategoryEditIndex = faker.datatype.number(2);
-let randomFeatureEditIndex = faker.datatype.number(3);
-var randomCategoryEdit = categoryArray[randomCategoryEditIndex]
-var randomFeatureEdit = featuresArray[randomFeatureEditIndex]
-var randomFeaturesVerifyEdit = featuresArrayVerify[randomFeatureEditIndex]
-
 describe('Test suite with Page-objects - Assignment02', () =>{
 
     beforeEach ('Visit website and log in with valid credentials', () => {
@@ -45,7 +34,6 @@ describe('Test suite with Page-objects - Assignment02', () =>{
         loginPage.performValidLogin('tester01', 'GteteqbQQgSr88SwNExUQv2ydb7xuf8c', 'Tester Hotel Overview')
     })
 
-    // ORIGINAL 10 TEST CASES
     it('View Rooms', () => {
         indexPage.navigateToRooms('Rooms')
         roomsPage.performLogout('Login')

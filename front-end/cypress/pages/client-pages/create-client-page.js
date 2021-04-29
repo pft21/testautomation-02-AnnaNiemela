@@ -15,8 +15,8 @@ function performLogout(confirmationContent){
 }
 
 function createClient(randomName1, randomEmail1, randomTelephone1){
-    cy.get(NAME_FIELD).wait(200).type(randomName1)
-    cy.get(EMAIL_FIELD).wait(200).type(randomEmail1)
+    cy.get(NAME_FIELD).type(randomName1)
+    cy.get(EMAIL_FIELD).type(randomEmail1)
     cy.get(TELEPHONE_FIELD).wait(200).type(randomTelephone1)
 }
 

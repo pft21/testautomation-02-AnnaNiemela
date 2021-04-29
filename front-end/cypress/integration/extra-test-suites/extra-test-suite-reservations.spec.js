@@ -11,7 +11,6 @@ import * as billsPage from "../../pages/bill-pages/bills-page"
 import * as createBillPage from "../../pages/bill-pages/create-bill-page"
 import * as clientsPage from "../../pages/client-pages/clients-page"
 import * as createClientPage from "../../pages/client-pages/create-client-page"
-import { date } from "faker"
 
 var faker = require('faker');
 // varibles for creating a new room

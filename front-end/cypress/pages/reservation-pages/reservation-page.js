@@ -37,7 +37,7 @@ function deleteReservation(){
 }
 
 function returnToIndexPage(confirmationContent){
-    cy.get(BACK_BTN).click().wait(200)
+    cy.get(BACK_BTN).click().wait(500)
     cy.contains(confirmationContent)
 }
 

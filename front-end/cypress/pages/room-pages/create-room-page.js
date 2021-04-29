@@ -21,37 +21,37 @@ function performLogout(confirmationContent){
 
 function createRoom(randomCategory, randomRoomNumber, randomFloorNumber, randomAvailability, randomPrice, randomFeature){
     if (randomRoomNumber > 0) {
-        cy.get(ROOM_NUMBER_FIELD).wait(200).type(randomRoomNumber)
+        cy.get(ROOM_NUMBER_FIELD).type(randomRoomNumber)
         } else {
         }
 
     if (randomFloorNumber > 0) {
-        cy.get(FLOOR_NUMBER_FIELD).wait(200).type(randomFloorNumber)
+        cy.get(FLOOR_NUMBER_FIELD).type(randomFloorNumber)
         } else {
         }
         
     if (randomPrice > 0) {
-        cy.get(PRICE_FIELD).wait(200).type(randomPrice)
+        cy.get(PRICE_FIELD).type(randomPrice)
         } else {
         }
 
     if (randomCategory == 'double' || randomCategory == 'single' || randomCategory == 'twin') {
-        cy.get(CATEGORY_DROPDOWN_LIST).wait(200).select(randomCategory)
+        cy.get(CATEGORY_DROPDOWN_LIST).select(randomCategory)
         } else {
         }
 
     if (randomAvailability == 'true') {
-        cy.get(AVAILABILITY_CHECKBOX).wait(200).click()
+        cy.get(AVAILABILITY_CHECKBOX).click()
         } else {
         }
         
     if (randomAvailability == 'false') {
-        cy.get(AVAILABILITY_CHECKBOX).wait(200).click().wait(200).click()
+        cy.get(AVAILABILITY_CHECKBOX).click().wait(200).click()
         } else {
         }
 
     if (randomFeature == 'balcony' || randomFeature == 'ensuite' || randomFeature == 'Sea View' || randomFeature == 'penthouse') {
-        cy.get(FEATURES_SELECTIONS).wait(200).select(randomFeature)
+        cy.get(FEATURES_SELECTIONS).select(randomFeature)
         } else {
         }
  } 

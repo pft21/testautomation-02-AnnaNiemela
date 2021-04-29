@@ -24,27 +24,27 @@ function deleteRoom(confirmationContent){
 }
 
 function editCategory(randomEditCategory){
-    cy.get(EDIT_CATEGORY_DROPDOWN_LIST).wait(200).select(randomEditCategory)
+    cy.get(EDIT_CATEGORY_DROPDOWN_LIST).select(randomEditCategory)
 }
 
 function editRoomNumber(randomEditRoomNumber){
-    cy.get(EDIT_ROOM_NUMBER_FIELD).wait(200).clear().type(randomEditRoomNumber)
+    cy.get(EDIT_ROOM_NUMBER_FIELD).clear().type(randomEditRoomNumber)
 }
 
 function editFloorNumber(randomEditFloorNumber){
-    cy.get(EDIT_FLOOR_NUMBER_FIELD).wait(200).clear().type(randomEditFloorNumber)
+    cy.get(EDIT_FLOOR_NUMBER_FIELD).clear().type(randomEditFloorNumber)
 }
 
 function editAvailability(){
-    cy.get(EDIT_AVAILABILITY_CHECKBOX).wait(200).click()
+    cy.get(EDIT_AVAILABILITY_CHECKBOX).click()
 }
 
 function editPrice(price){
-    cy.get(EDIT_PRICE_FIELD).wait(200).clear().type(price)
+    cy.get(EDIT_PRICE_FIELD).clear().type(price)
 }
 
 function editFeatures(features){
-    cy.get(EDIT_FEATURES_SELECTIONS).wait(200).select(features)
+    cy.get(EDIT_FEATURES_SELECTIONS).select(features)
 }
 
 function saveEdit(confirmationContent){

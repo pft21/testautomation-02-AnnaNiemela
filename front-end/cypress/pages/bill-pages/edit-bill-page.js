@@ -15,11 +15,11 @@ function performLogout(confirmationContent){
 }
 
 function editValue(value){
-    cy.get(EDIT_VALUE_FIELD).wait(200).clear().type(value)
+    cy.get(EDIT_VALUE_FIELD).clear().type(value)
 }
 
 function editPaid(){
-    cy.get(EDIT_PAID_CHECKBOX).wait(200).click()
+    cy.get(EDIT_PAID_CHECKBOX).click()
 }
 
 function saveBill(confirmationContent){

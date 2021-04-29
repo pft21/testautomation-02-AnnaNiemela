@@ -14,11 +14,11 @@ function performLogout(confirmationContent){
 }
 
 function createBill(randomValue1, randomPaid1){
-    cy.get(VALUE_FIELD).wait(200).type(randomValue1)
+    cy.get(VALUE_FIELD).type(randomValue1)
     if (randomPaid1 == 'No' || randomPaid1 == '') {
-        cy.get(PAID_CHECKBOX).wait(200).click().wait(200).click()
+        cy.get(PAID_CHECKBOX).click().wait(200).click()
         } else {
-            cy.get(PAID_CHECKBOX).wait(200).click()
+            cy.get(PAID_CHECKBOX).click()
         }
 }
 
