@@ -8,7 +8,7 @@ import * as editRoomPage from "../../pages/room-pages/edit-room-page"
 
 var faker = require('faker');
 
-// varibles for creating a new room
+// variables for creating a new room
 let randomFloorNumber = faker.datatype.number(9)+1;
 let randomRoomNumber = faker.datatype.number(30) + (randomFloorNumber * 100);
 let randomAvailabilityIndex = faker.datatype.number(1)

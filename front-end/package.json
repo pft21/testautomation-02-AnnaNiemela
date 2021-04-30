@@ -6,11 +6,11 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "npx cypress run --reporter mochawesome --spec cypress/integration/test-suite-assignment02.spec.js",
+    "cypress:run:all": "npx cypress run --reporter mochawesome",
     "test:vrt": "percy exec cypress run --spec cypress/integration/test-suite-percy.spec.js",
-    "clean-results": "rm -rf cypress/results",
-    "clean-all-reports": "rm -rf cypress/results && rm -rf cypress/videos && rm ~/Desktop/cypress-test-hotel/front-end/mochawesome.json && rm -rf ~/Desktop/cypress-test-hotel/front-end/mochawesome-report",
-    "merge-reports": "npx mochawesome-merge cypress/results/*.json > mochawesome.json",
-    "generate-html": "npx marge mochawesome.json",
+    "merge:reports": "npx mochawesome-merge cypress/results/*.json > mochawesome.json",
+    "generate:html": "npx marge mochawesome.json",
+    "delete:reports": "rm -rf cypress/results && rm -rf cypress/videos && rm mochawesome.json && rm -rf mochawesome-report",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

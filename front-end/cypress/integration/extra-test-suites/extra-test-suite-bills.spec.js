@@ -8,7 +8,7 @@ import * as editBillPage from "../../pages/bill-pages/edit-bill-page"
 
 var faker = require('faker');
 
-// varibles for creating a new bill
+// variables for creating a new bill
 let randomValue1 = faker.datatype.number(5000);
 let randomPaidIndex1 = faker.datatype.number(1);
 

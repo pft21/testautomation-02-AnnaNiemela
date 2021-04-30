@@ -37,14 +37,14 @@ let randomValue1 = faker.datatype.number(5000);
 let randomPaidIndex1 = faker.datatype.number(1);
 var paidArray = ['Yes', 'No',]
 var randomPaid1 = paidArray[randomPaidIndex1]
-// varibles for creating a new reservation
+// variables for creating a new reservation
 var randomDate1 = faker.datatype.number(20)+10;
 var randomDate2 = faker.datatype.number(20)+10;
 var randomStartDate1 = '2021-05-' + randomDate1
 var randomEndDate1 = '2021-06-' + randomDate2
 // variables for editing reservation
-var randomStartDate2 = '2021-05-' + randomDate1
-var randomEndDate2 = '2021-06-' + randomDate2
+var randomStartDate2 = '2021-05-' + randomDate2
+var randomEndDate2 = '2021-06-' + randomDate1
 
 describe('Extra test suite with Page-objects - Reservations', () =>{
 

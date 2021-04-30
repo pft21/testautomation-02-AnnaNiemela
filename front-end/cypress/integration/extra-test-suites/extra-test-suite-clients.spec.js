@@ -8,7 +8,7 @@ import * as editClientPage from "../../pages/client-pages/edit-client-page"
 
 var faker = require('faker');
 
-// varibles for creating a client
+// variables for creating a client
 let randomName1 = faker.name.findName();
 let randomEmail1 = faker.internet.email();
 let randomTelephone1 = faker.phone.phoneNumber();
